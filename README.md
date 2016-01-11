@@ -7,4 +7,5 @@ This is the original Angular 1.X application that was used for the tutorial. Now
 The first step in the migration process is to make the application look like what suggested in the best practices/style guide. 
 Style guide avaialble here: https://github.com/johnpapa/angular-styleguide 
 This branch would contain the application modified to follow the recommended best practices.
+Branch - ng-migration-step-1
 
