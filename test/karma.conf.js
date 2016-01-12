@@ -9,9 +9,10 @@ module.exports = function(config){
       'app/bower_components/angular-resource/angular-resource.js',
       'app/bower_components/angular-animate/angular-animate.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
-      'app/js/**/*.module.js',
-      'app/js/**/*.{animation,controller,directive,factory,filter,service}.js',
-      'test/unit/**/*.js'
+      'node_modules/systemjs/dist/system.src.js',
+      'test/karma_test_shim.js',
+      {pattern: 'app/js/**/*.js', included: false, watched: true},
+      {pattern: 'test/unit/**/*.js', included: false, watched: true}
     ],
 
     autoWatch : true,
