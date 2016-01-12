@@ -9,3 +9,16 @@ Style guide avaialble here: https://github.com/johnpapa/angular-styleguide
 This branch would contain the application modified to follow the recommended best practices.
 Branch - ng-migration-step-1
 
+
+## Angular 2.0 Migration - Step 1 (Switch to TypeScript and Module Loading)
+Convert all our code to TypeScript. 
+Enable the compilation process.
+Introduce the module loading using System.js 
+To run this application install:
+	=> SystemJS: npm i systemjs -save
+	=> TypScript: npm i typescript --save-dev
+	=> TypeScript Definition Manager: npm i -g tsd
+	=> Install type definitions:
+	   tsd install angular angular-route angular-resource angular-mocks jasmine
+	=> To execute compilation: npm run tsc 
+Branch - ng-migration-step-2
