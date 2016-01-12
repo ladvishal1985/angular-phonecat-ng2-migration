@@ -7,6 +7,7 @@ import phoneList from './phone_list/phone_list.module';
 import phoneDetail from './phone_detail/phone_detail.module';
 
 var phonecatApp = angular.module('phonecatApp', [
+    'ngAnimate',
     'ngRoute',
     core.name,
     phoneList.name,

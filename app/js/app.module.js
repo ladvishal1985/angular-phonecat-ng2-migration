@@ -33,6 +33,7 @@ System.register(['./core/core.module', './phone_list/phone_list.module', './phon
             }],
         execute: function() {
             phonecatApp = angular.module('phonecatApp', [
+                'ngAnimate',
                 'ngRoute',
                 core_module_1.default.name,
                 phone_list_module_1.default.name,
