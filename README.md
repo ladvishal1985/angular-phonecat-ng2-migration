@@ -10,15 +10,21 @@ This branch would contain the application modified to follow the recommended bes
 Branch - ng-migration-step-1
 
 
-## Angular 2.0 Migration - Step 1 (Switch to TypeScript and Module Loading)
+## Angular 2.0 Migration - Step 2 (Switch to TypeScript and Module Loading)
 Convert all our code to TypeScript. 
 Enable the compilation process.
 Introduce the module loading using System.js 
 To run this application install:
-	=> SystemJS: npm i systemjs -save
-	=> TypScript: npm i typescript --save-dev
-	=> TypeScript Definition Manager: npm i -g tsd
-	=> Install type definitions:
-	   tsd install angular angular-route angular-resource angular-mocks jasmine
-	=> To execute compilation: npm run tsc 
+	
+#####SystemJS: 
+    npm i systemjs -save
+#####TypScript: 
+    npm i typescript --save-dev
+#####TypeScript Definition Manager: 
+    npm i -g tsd
+##### Install type definitions:
+    tsd install angular angular-route angular-resource angular-mocks jasmine
+##### To execute compilation: 
+    npm run tsc 
+
 Branch - ng-migration-step-2
