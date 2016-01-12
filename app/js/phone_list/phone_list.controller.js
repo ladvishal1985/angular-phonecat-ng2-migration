@@ -1,12 +1,15 @@
 System.register([], function(exports_1) {
-    function PhoneListCtrl(Phone) {
-        var vm = this;
-        vm.phones = Phone.query();
-        vm.orderProp = 'age';
-    }
+    var PhoneListCtrl;
     return {
         setters:[],
         execute: function() {
+            PhoneListCtrl = (function () {
+                function PhoneListCtrl(Phone) {
+                    this.phones = Phone.query();
+                    this.orderProp = 'age';
+                }
+                return PhoneListCtrl;
+            })();
             PhoneListCtrl.$inject = ['Phone'];
             exports_1("default",PhoneListCtrl);
         }
