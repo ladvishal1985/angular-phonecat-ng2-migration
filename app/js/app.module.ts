@@ -2,6 +2,7 @@
 /// <reference path="../../typings/angularjs/angular-resource.d.ts" />
 /// <reference path="../../typings/angularjs/angular-route.d.ts" />
 
+import {UpgradeAdapter} from 'angular2/upgrade';
 import core from './core/core.module';
 import phoneList from './phone_list/phone_list.module';
 import phoneDetail from './phone_detail/phone_detail.module';
@@ -32,5 +33,5 @@ function configure($routeProvider) {
             redirectTo: '/phones'
         });
 };
-
-angular.bootstrap(document.documentElement, ['phonecatApp']);
+const upgradeAdapter = new UpgradeAdapter();
+upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp']);

@@ -1,9 +1,9 @@
 /// <reference path="../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../typings/angularjs/angular-resource.d.ts" />
 /// <reference path="../../typings/angularjs/angular-route.d.ts" />
-System.register(['./core/core.module', './phone_list/phone_list.module', './phone_detail/phone_detail.module'], function(exports_1) {
-    var core_module_1, phone_list_module_1, phone_detail_module_1;
-    var phonecatApp;
+System.register(['angular2/upgrade', './core/core.module', './phone_list/phone_list.module', './phone_detail/phone_detail.module'], function(exports_1) {
+    var upgrade_1, core_module_1, phone_list_module_1, phone_detail_module_1;
+    var phonecatApp, upgradeAdapter;
     function configure($routeProvider) {
         $routeProvider.
             when('/phones', {
@@ -22,6 +22,9 @@ System.register(['./core/core.module', './phone_list/phone_list.module', './phon
     }
     return {
         setters:[
+            function (upgrade_1_1) {
+                upgrade_1 = upgrade_1_1;
+            },
             function (core_module_1_1) {
                 core_module_1 = core_module_1_1;
             },
@@ -41,7 +44,8 @@ System.register(['./core/core.module', './phone_list/phone_list.module', './phon
             ]).config(configure);
             configure.$inject = ['$routeProvider'];
             ;
-            angular.bootstrap(document.documentElement, ['phonecatApp']);
+            upgradeAdapter = new upgrade_1.UpgradeAdapter();
+            upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp']);
         }
     }
 });
