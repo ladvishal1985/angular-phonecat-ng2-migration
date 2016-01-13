@@ -1,13 +1,16 @@
-System.register(['./phone_list.controller'], function(exports_1) {
-    var phone_list_controller_1;
+System.register(['./PhoneList', '../core/upgrade_adapter'], function(exports_1) {
+    var PhoneList_1, upgrade_adapter_1;
     return {
         setters:[
-            function (phone_list_controller_1_1) {
-                phone_list_controller_1 = phone_list_controller_1_1;
+            function (PhoneList_1_1) {
+                PhoneList_1 = PhoneList_1_1;
+            },
+            function (upgrade_adapter_1_1) {
+                upgrade_adapter_1 = upgrade_adapter_1_1;
             }],
         execute: function() {
             exports_1("default",angular.module('phonecat.list', ['phonecat.core'])
-                .controller('PhoneListCtrl', phone_list_controller_1.default));
+                .directive('pcPhoneList', upgrade_adapter_1.default.downgradeNg2Component(PhoneList_1.default)));
         }
     }
 });

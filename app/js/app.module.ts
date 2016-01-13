@@ -22,9 +22,7 @@ configure.$inject = ['$routeProvider'];
 function configure($routeProvider) {
     $routeProvider.
         when('/phones', {
-            templateUrl: 'js/phone_list/phone_list.html',
-            controller: 'PhoneListCtrl',
-            controllerAs: 'vm'
+            template: '<pc-phone-list></pc-phone-list>'
         }).
         when('/phones/:phoneId', {
             templateUrl: 'js/phone_detail/phone_detail.html',
