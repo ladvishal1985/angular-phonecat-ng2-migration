@@ -3,7 +3,7 @@ import {Phone} from '../core/Phones';
 
 @Pipe({ name: 'phoneFilter' })
 export default class PhoneFilterPipe {
-	transform(input:Phone[], args:string[]):Phones[] {
+	transform(input:Phone[], args:string[]):Phone[] {
 		let query =  args[0];
 		if(query) {
 			return input.filter((phone) => {
