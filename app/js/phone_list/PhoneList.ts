@@ -11,13 +11,11 @@ import OrderByPipe from './OrderByPipe';
 })
 
 class PhoneListCtrl {
-	phones: Phone[];
+	phones: Observable<Phone[]>;
 	orderProp: string;
 	query: string;
 	constructor(phones: Phones) {
-		phones.query().subscribe((phones) => {
-			this.phones = phones
-		});
+		this.phones = phones.query();
 		this.orderProp = 'age';
 	}
 }

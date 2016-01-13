@@ -27,10 +27,7 @@ System.register(['angular2/core', '../core/Phones', './PhoneFilterPipe', './Orde
         execute: function() {
             PhoneListCtrl = (function () {
                 function PhoneListCtrl(phones) {
-                    var _this = this;
-                    phones.query().subscribe(function (phones) {
-                        _this.phones = phones;
-                    });
+                    this.phones = phones.query();
                     this.orderProp = 'age';
                 }
                 PhoneListCtrl = __decorate([
