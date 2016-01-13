@@ -1,38 +1,36 @@
+import {Observable} from 'rxjs';
+import {describe, beforeEach, it} from 'angular2/testing';
 import '../../app/js/phone_detail/phone_detail.module';
-
-/* jasmine specs for controllers go here */
+import {Phones} from '../../app/js/core/Phones';
+import {FromObservable} from 'rxjs/observable/from';
 describe('PhoneDetailCtrl', function() {
-
-    var $httpBackend, ctrl,
+    var scope, phones, $controller,
         xyzPhoneData = function() {
             return {
-            name: 'phone xyz',
+                name: 'phone xyz',
+                snippet: '',
                 images: ['image/url1.png', 'image/url2.png']
             }
         };
-
-    beforeEach(function(){
-        this.addMatchers({
-            toEqualData: function(expected) {
-                return angular.equals(this.actual, expected);
-            }
-        });
-    });
-
     beforeEach(angular.mock.module('phonecat.detail'));
-
-    beforeEach(inject(function(_$httpBackend_, $routeParams, $controller) {
-        $httpBackend = _$httpBackend_;
-        $httpBackend.expectGET('phones/xyz.json').respond(xyzPhoneData());
-
+    
+    // Supply a hand-instantianted instance of the Phones service
+    beforeEach(angular.mock.module(function($provide) {
+        $provide.factory('phones', function() {
+            return new Phones(null);
+        });
+    }));
+    beforeEach(inject(function(_phones_, _$controller_, $rootScope, $routeParams) {
+        phones = _phones_;
+        $controller = _$controller_;
         $routeParams.phoneId = 'xyz';
-        ctrl = $controller('PhoneDetailCtrl');
+        scope = $rootScope.$new();
     }));
 
     it('should fetch phone detail', function() {
-        expect(ctrl.phone).toEqualData({});
-        $httpBackend.flush();
-
-        expect(ctrl.phone).toEqualData(xyzPhoneData());
+        spyOn(phones, 'get').and.returnValue(FromObservable.create([xyzPhoneData()]));
+        let ctrl = $controller('PhoneDetailCtrl', { $scope: scope });
+        expect(phones.get).toHaveBeenCalledWith('xyz');
+        expect(ctrl.phone).toEqual(xyzPhoneData());
     });
 });

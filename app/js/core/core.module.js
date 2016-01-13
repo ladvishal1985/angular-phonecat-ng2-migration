@@ -16,7 +16,6 @@ System.register(['./Phones', './checkmark.filter', './upgrade_adapter'], functio
             exports_1("default",angular.module('phonecat.core', [])
                 .factory('phones', upgrade_adapter_1.default.downgradeNg2Provider(Phones_1.Phones))
                 .filter('checkmark', checkmark_filter_1.default));
-            ;
         }
     }
 });

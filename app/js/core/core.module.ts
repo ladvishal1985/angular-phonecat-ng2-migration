@@ -6,4 +6,4 @@ upgradeAdapter.addProvider(Phones);
 
 export default angular.module('phonecat.core', [])
 	.factory('phones', upgradeAdapter.downgradeNg2Provider(Phones))
-	.filter('checkmark', checkmarkFilter);;
+	.filter('checkmark', checkmarkFilter);
