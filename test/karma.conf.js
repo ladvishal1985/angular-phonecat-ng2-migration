@@ -22,9 +22,13 @@ module.exports = function(config){
         /**/
         'test/karma_test_shim.js',
         {pattern: 'app/js/**/*.js', included: false, watched: true},
-        {pattern: 'test/unit/**/*.js', included: false, watched: true}
+        {pattern: 'test/unit/**/*.js', included: false, watched: true},
+        {pattern: 'app/js/**/*.html', included: false, watched: true}
     ],
-
+    proxies: {
+      // required for component assests fetched by Angular's compiler
+      "/js": "/base/app/js"
+    },
     autoWatch : true,
 
     frameworks: ['jasmine'],

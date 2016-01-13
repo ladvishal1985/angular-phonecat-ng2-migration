@@ -25,9 +25,7 @@ function configure($routeProvider) {
             template: '<pc-phone-list></pc-phone-list>'
         }).
         when('/phones/:phoneId', {
-            templateUrl: 'js/phone_detail/phone_detail.html',
-            controller: 'PhoneDetailCtrl',
-            controllerAs: 'vm'
+            template: '<pc-phone-detail></pc-phone-detail>'
         }).
         otherwise({
             redirectTo: '/phones'
@@ -35,4 +33,5 @@ function configure($routeProvider) {
 };
 
 upgradeAdapter.addProvider(HTTP_PROVIDERS);
+upgradeAdapter.upgradeNg1Provider('$routeParams');
 upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp']);

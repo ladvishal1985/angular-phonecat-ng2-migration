@@ -1,6 +1,7 @@
 import {describe, beforeEachProviders, it, inject} from 'angular2/testing';
 import PhoneFilterPipe from '../../app/js/phone_list/PhoneFilterPipe';
 import {Phone} from '../../app/js/core/Phones';
+
 describe('PhoneFilterPipe', function() {
     let phones: Phone[] = [
         { name: 'Nexus S', snippet: 'The Nexus S Phone', images: [] },

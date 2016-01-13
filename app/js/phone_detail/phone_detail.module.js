@@ -1,13 +1,16 @@
-System.register(['./phone_detail.controller'], function(exports_1) {
-    var phone_detail_controller_1;
+System.register(['./PhoneDetail', '../core/upgrade_adapter'], function(exports_1) {
+    var PhoneDetail_1, upgrade_adapter_1;
     return {
         setters:[
-            function (phone_detail_controller_1_1) {
-                phone_detail_controller_1 = phone_detail_controller_1_1;
+            function (PhoneDetail_1_1) {
+                PhoneDetail_1 = PhoneDetail_1_1;
+            },
+            function (upgrade_adapter_1_1) {
+                upgrade_adapter_1 = upgrade_adapter_1_1;
             }],
         execute: function() {
             exports_1("default",angular.module('phonecat.detail', ['ngRoute', 'phonecat.core'])
-                .controller('PhoneDetailCtrl', phone_detail_controller_1.default));
+                .directive('pcPhoneDetail', upgrade_adapter_1.default.downgradeNg2Component(PhoneDetail_1.default)));
         }
     }
 });

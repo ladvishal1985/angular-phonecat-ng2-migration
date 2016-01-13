@@ -10,9 +10,7 @@ System.register(['angular2/http', './core/core.module', './phone_list/phone_list
             template: '<pc-phone-list></pc-phone-list>'
         }).
             when('/phones/:phoneId', {
-            templateUrl: 'js/phone_detail/phone_detail.html',
-            controller: 'PhoneDetailCtrl',
-            controllerAs: 'vm'
+            template: '<pc-phone-detail></pc-phone-detail>'
         }).
             otherwise({
             redirectTo: '/phones'
@@ -46,6 +44,7 @@ System.register(['angular2/http', './core/core.module', './phone_list/phone_list
             configure.$inject = ['$routeProvider'];
             ;
             upgrade_adapter_1.default.addProvider(http_1.HTTP_PROVIDERS);
+            upgrade_adapter_1.default.upgradeNg1Provider('$routeParams');
             upgrade_adapter_1.default.bootstrap(document.documentElement, ['phonecatApp']);
         }
     }
