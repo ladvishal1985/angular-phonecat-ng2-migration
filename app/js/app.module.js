@@ -1,9 +1,9 @@
 /// <reference path="../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../typings/angularjs/angular-resource.d.ts" />
 /// <reference path="../../typings/angularjs/angular-route.d.ts" />
-System.register(['angular2/upgrade', './core/core.module', './phone_list/phone_list.module', './phone_detail/phone_detail.module'], function(exports_1) {
-    var upgrade_1, core_module_1, phone_list_module_1, phone_detail_module_1;
-    var phonecatApp, upgradeAdapter;
+System.register(['angular2/http', './core/core.module', './phone_list/phone_list.module', './phone_detail/phone_detail.module', './core/upgrade_adapter'], function(exports_1) {
+    var http_1, core_module_1, phone_list_module_1, phone_detail_module_1, upgrade_adapter_1;
+    var phonecatApp;
     function configure($routeProvider) {
         $routeProvider.
             when('/phones', {
@@ -22,8 +22,8 @@ System.register(['angular2/upgrade', './core/core.module', './phone_list/phone_l
     }
     return {
         setters:[
-            function (upgrade_1_1) {
-                upgrade_1 = upgrade_1_1;
+            function (http_1_1) {
+                http_1 = http_1_1;
             },
             function (core_module_1_1) {
                 core_module_1 = core_module_1_1;
@@ -33,6 +33,9 @@ System.register(['angular2/upgrade', './core/core.module', './phone_list/phone_l
             },
             function (phone_detail_module_1_1) {
                 phone_detail_module_1 = phone_detail_module_1_1;
+            },
+            function (upgrade_adapter_1_1) {
+                upgrade_adapter_1 = upgrade_adapter_1_1;
             }],
         execute: function() {
             phonecatApp = angular.module('phonecatApp', [
@@ -44,8 +47,8 @@ System.register(['angular2/upgrade', './core/core.module', './phone_list/phone_l
             ]).config(configure);
             configure.$inject = ['$routeProvider'];
             ;
-            upgradeAdapter = new upgrade_1.UpgradeAdapter();
-            upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp']);
+            upgrade_adapter_1.default.addProvider(http_1.HTTP_PROVIDERS);
+            upgrade_adapter_1.default.bootstrap(document.documentElement, ['phonecatApp']);
         }
     }
 });

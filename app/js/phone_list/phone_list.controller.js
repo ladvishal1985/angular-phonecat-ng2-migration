@@ -4,13 +4,16 @@ System.register([], function(exports_1) {
         setters:[],
         execute: function() {
             PhoneListCtrl = (function () {
-                function PhoneListCtrl(Phone) {
-                    this.phones = Phone.query();
+                function PhoneListCtrl(phones) {
+                    var _this = this;
+                    phones.query().subscribe(function (phones) {
+                        _this.phones = phones;
+                    });
                     this.orderProp = 'age';
                 }
                 return PhoneListCtrl;
             })();
-            PhoneListCtrl.$inject = ['Phone'];
+            PhoneListCtrl.$inject = ['phones'];
             exports_1("default",PhoneListCtrl);
         }
     }

@@ -1,6 +1,9 @@
-import Phone from './phone.factory';
+import {Phones} from './Phones';
 import checkmarkFilter from './checkmark.filter';
+import upgradeAdapter from './upgrade_adapter';
 
-export default angular.module('phonecat.core', ['ngResource'])
-	.factory('Phone', Phone)
+upgradeAdapter.addProvider(Phones);
+
+export default angular.module('phonecat.core', [])
+	.factory('phones', upgradeAdapter.downgradeNg2Provider(Phones))
 	.filter('checkmark', checkmarkFilter);;

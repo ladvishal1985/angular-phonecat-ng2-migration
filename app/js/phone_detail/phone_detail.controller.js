@@ -4,10 +4,11 @@ System.register([], function(exports_1) {
         setters:[],
         execute: function() {
             PhoneDetailCtrl = (function () {
-                function PhoneDetailCtrl($routeParams, Phone) {
+                function PhoneDetailCtrl($routeParams, phones) {
                     var _this = this;
-                    this.phone = Phone.get({ phoneId: $routeParams.phoneId }, function (phone) {
-                        return _this.mainImageUrl = phone.images[0];
+                    phones.get($routeParams.phoneId).subscribe(function (phone) {
+                        _this.phone = phone;
+                        _this.mainImageUrl = phone.images[0];
                     });
                 }
                 PhoneDetailCtrl.prototype.setImage = function (url) {
@@ -15,7 +16,7 @@ System.register([], function(exports_1) {
                 };
                 return PhoneDetailCtrl;
             })();
-            PhoneDetailCtrl.$inject = ['$routeParams', 'Phone'];
+            PhoneDetailCtrl.$inject = ['$routeParams', 'phones'];
             exports_1("default",PhoneDetailCtrl);
         }
     }

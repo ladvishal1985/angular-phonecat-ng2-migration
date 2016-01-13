@@ -1,13 +1,17 @@
+import {Phones, Phone} from '../core/Phones';
+
 interface PhoneRouteParams {
 	phoneId: string;
 }
 
 class PhoneDetailCtrl {
-	phone: any;
+	phone: Phone;
 	mainImageUrl: string;
-	constructor($routeParams: PhoneRouteParams, Phone) {
-		this.phone = Phone.get({ phoneId: $routeParams.phoneId }, (phone) => 
-			this.mainImageUrl = phone.images[0])
+	constructor($routeParams: PhoneRouteParams,phones:Phones) {
+		phones.get($routeParams.phoneId).subscribe((phone) => {
+			this.phone = phone;
+			this.mainImageUrl = phone.images[0]
+		});
 	}
 	
 	setImage(url: string) {
@@ -15,6 +19,6 @@ class PhoneDetailCtrl {
 	}
 }
 
-PhoneDetailCtrl.$inject = ['$routeParams', 'Phone'];
+PhoneDetailCtrl.$inject = ['$routeParams', 'phones'];
 
 export default PhoneDetailCtrl;

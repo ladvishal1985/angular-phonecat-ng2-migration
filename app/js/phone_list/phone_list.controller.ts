@@ -1,13 +1,17 @@
+import {Phones, Phone} from '../core/Phones';
+
 class PhoneListCtrl {
-	phones: any[];
+	phones: Phone[];
 	orderProp: string;
 	query: string;
-	constructor(Phone) {
-		this.phones = Phone.query();
+	constructor(phones: Phones) {
+		phones.query().subscribe((phones) => {
+			this.phones = phones
+		});
 		this.orderProp = 'age';
 	}
 }
 
-PhoneListCtrl.$inject = ['Phone'];
+PhoneListCtrl.$inject = ['phones'];
 
 export default PhoneListCtrl;

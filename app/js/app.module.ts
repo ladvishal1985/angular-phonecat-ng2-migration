@@ -3,9 +3,11 @@
 /// <reference path="../../typings/angularjs/angular-route.d.ts" />
 
 import {UpgradeAdapter} from 'angular2/upgrade';
+import {HTTP_PROVIDERS} from 'angular2/http';
 import core from './core/core.module';
 import phoneList from './phone_list/phone_list.module';
 import phoneDetail from './phone_detail/phone_detail.module';
+import upgradeAdapter from './core/upgrade_adapter';
 
 var phonecatApp = angular.module('phonecatApp', [
     'ngAnimate',
@@ -33,5 +35,6 @@ function configure($routeProvider) {
             redirectTo: '/phones'
         });
 };
-const upgradeAdapter = new UpgradeAdapter();
+
+upgradeAdapter.addProvider(HTTP_PROVIDERS);
 upgradeAdapter.bootstrap(document.documentElement, ['phonecatApp']);
