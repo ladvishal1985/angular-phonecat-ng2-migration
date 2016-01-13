@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../core/Phones', '../core/CheckmarkPipe'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', '../core/Phones', '../core/CheckmarkPipe'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,15 +8,15 @@ System.register(['angular2/core', '../core/Phones', '../core/CheckmarkPipe'], fu
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var __param = (this && this.__param) || function (paramIndex, decorator) {
-        return function (target, key) { decorator(target, key, paramIndex); }
-    };
-    var core_1, Phones_1, CheckmarkPipe_1;
+    var core_1, router_1, Phones_1, CheckmarkPipe_1;
     var PhoneDetail;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             },
             function (Phones_1_1) {
                 Phones_1 = Phones_1_1;
@@ -26,10 +26,10 @@ System.register(['angular2/core', '../core/Phones', '../core/CheckmarkPipe'], fu
             }],
         execute: function() {
             PhoneDetail = (function () {
-                function PhoneDetail($routeParams, phones) {
+                function PhoneDetail(params, phones) {
                     var _this = this;
                     this.phone = undefined;
-                    phones.get($routeParams.phoneId)
+                    phones.get(params.get('phoneId'))
                         .subscribe(function (phone) {
                         _this.phone = phone;
                         _this.mainImageUrl = phone.images[0];
@@ -43,9 +43,8 @@ System.register(['angular2/core', '../core/Phones', '../core/CheckmarkPipe'], fu
                         selector: 'pc-phone-detail',
                         templateUrl: 'js/phone_detail/phone_detail.html',
                         pipes: [CheckmarkPipe_1.CheckmarkPipe]
-                    }),
-                    __param(0, core_1.Inject('$routeParams')), 
-                    __metadata('design:paramtypes', [Object, Phones_1.Phones])
+                    }), 
+                    __metadata('design:paramtypes', [router_1.RouteParams, Phones_1.Phones])
                 ], PhoneDetail);
                 return PhoneDetail;
             })();

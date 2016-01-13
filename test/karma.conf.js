@@ -4,13 +4,7 @@ module.exports = function(config){
     basePath : '../',
 
     files : [
-        'app/bower_components/angular/angular.js',
-        'app/bower_components/angular-route/angular-route.js',
-        'app/bower_components/angular-resource/angular-resource.js',
-        'app/bower_components/angular-animate/angular-animate.js',
-        'app/bower_components/angular-mocks/angular-mocks.js',
         'node_modules/systemjs/dist/system.src.js',
-        /**/
         'node_modules/es6-shim/es6-shim.js',
         'node_modules/es6-promise/dist/es6-promise.js',
         'node_modules/angular2/bundles/angular2-polyfills.js',
@@ -19,6 +13,7 @@ module.exports = function(config){
         'node_modules/angular2/bundles/upgrade.dev.js',
         'node_modules/angular2/bundles/http.dev.js',
         'node_modules/angular2/bundles/testing.dev.js',
+        'node_modules/angular2/bundles/router.dev.js',
         /**/
         'test/karma_test_shim.js',
         {pattern: 'app/js/**/*.js', included: false, watched: true},

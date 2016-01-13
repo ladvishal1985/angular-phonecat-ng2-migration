@@ -62,4 +62,4 @@ System.register(['angular2/core', 'angular2/platform/browser', './core/Phones', 
         }
     }
 });
-//# sourceMappingURL=app.module.js.map
+//# sourceMappingURL=app.js.map

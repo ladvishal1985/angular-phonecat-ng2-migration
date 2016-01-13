@@ -12,6 +12,7 @@ TestComponentBuilder
 } from 'angular2/testing';
 import PhoneDetail from '../../app/js/phone_detail/PhoneDetail';
 import {Phones, Phone} from '../../app/js/core/Phones';
+import {RouteParams} from 'angular2/router';
 function xyzPhoneData(): Phone {
     return {
         name: 'phone xyz',
@@ -27,7 +28,7 @@ class MockPhones extends Phones {
 describe('PhoneDetail', function() {
     beforeEachProviders(() => [
         provide(Phones, { useClass: MockPhones }),
-        provide('$routeParams', { useValue: { phoneId: 'xyz' } }),
+        provide(RouteParams, { useValue: new RouteParams({ phoneId: 'xyz' }) }),
         HTTP_PROVIDERS
     ]);
     it('should fetch phone detail', injectAsync([TestComponentBuilder], (tcb) => {

@@ -1,10 +1,10 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/observable/from', 'angular2/testing', '../../app/js/phone_detail/PhoneDetail', '../../app/js/core/Phones'], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/observable/from', 'angular2/testing', '../../app/js/phone_detail/PhoneDetail', '../../app/js/core/Phones', 'angular2/router'], function(exports_1) {
     var __extends = (this && this.__extends) || function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
-    var core_1, http_1, from_1, testing_1, PhoneDetail_1, Phones_1;
+    var core_1, http_1, from_1, testing_1, PhoneDetail_1, Phones_1, router_1;
     var MockPhones;
     function xyzPhoneData() {
         return {
@@ -32,6 +32,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/observable/from', 'angu
             },
             function (Phones_1_1) {
                 Phones_1 = Phones_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             MockPhones = (function (_super) {
@@ -47,7 +50,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/observable/from', 'angu
             testing_1.describe('PhoneDetail', function () {
                 testing_1.beforeEachProviders(function () { return [
                     core_1.provide(Phones_1.Phones, { useClass: MockPhones }),
-                    core_1.provide('$routeParams', { useValue: { phoneId: 'xyz' } }),
+                    core_1.provide(router_1.RouteParams, { useValue: new router_1.RouteParams({ phoneId: 'xyz' }) }),
                     http_1.HTTP_PROVIDERS
                 ]; });
                 testing_1.it('should fetch phone detail', testing_1.injectAsync([testing_1.TestComponentBuilder], function (tcb) {
