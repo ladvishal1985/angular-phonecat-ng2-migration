@@ -28,3 +28,13 @@ To run this application install:
     npm run tsc 
 
 Branch - ng-migration-step-2
+
+## Angular 2.0 Migration - Step 3 (Introduce Angular 2.0)
+This is the final process for the migrations. The process requires us to use the UpdgradeAdapter which helps us to use Angular 1.x and Angular 2.0 together so that the existing functionalities does not get break.
+The major steps include:
+   1. Bootstrapping (Hybrid Angular 1.x + 2)
+   2. Converting all factories/services to follow Angular Syntax
+   3. Converting controllers to components
+   4. Introducing routing in place
+   5. Bootstrapping with Angular 2.0 
+   6. Removing all the Angular 1.x refernces
